@@ -1,8 +1,7 @@
 module.exports = function toReadable (number) {
   
     function get_unit(num) {
-
-        let number = num.toString(10)
+        let number = num.toString(10);
 
         let units = {
         '0': 'zero', 
@@ -28,11 +27,9 @@ module.exports = function toReadable (number) {
         }
         return units[number]
     }
-
     function get_teens(num) {
-
-        let number = num.toString(10)
-
+        let number = num.toString(10);
+        
         let teens = {
             '20': 'twenty',
             '30': 'thirty',
@@ -45,19 +42,15 @@ module.exports = function toReadable (number) {
         }
         return teens[number]
     }
-
     function get_hundred(num){
         let first_digit = Math.floor(num/100).toString(10);
         return get_unit(first_digit) + ' hundred'
     }
-
     function converter(num) {
         function convert_teens(num) {
-
             if (num < 20) {
                 return get_unit(num)
             }
-
             let teens = Math.floor(num/10)*10;
             let unit = num % 10;
 
@@ -66,7 +59,6 @@ module.exports = function toReadable (number) {
             }
             return get_teens(teens)
         }
-        
         function convert_hundred(num) {
             let hundred = Math.floor(num/100)*100;
             let teens = num % 100;
@@ -76,18 +68,12 @@ module.exports = function toReadable (number) {
             }
             return get_hundred(hundred)
         }
-
-        if ( num < 20 ){
-            return get_unit(num)
-        }
         else if (num < 100) {
             return convert_teens(num)
         }
         else if (num < 1000) {
             return convert_hundred(num)
         }
-
     }
-
     return converter(number)
 }
