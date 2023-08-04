@@ -16,12 +16,12 @@ module.exports = function toReadable (number) {
     }
     function convert_teens(num) {
         if (num < 20) return units[num]
-        let teen = Math.floor(num/10)*10;
+        const unit = Math.floor(num/10)*10;
         return unit ? teens[teen] + ' ' + units[num % 10] : teens[teen]
      }
     function convert_hundred(num) {
         let first_digit = Math.floor(num/100);
-        let teen = num % 100;
+        const teen = num % 100;
         return teen ? units[first_digit] + ' hundred ' + convert_teens(teen) : units[first_digit] + ' hundred'
     }
     function converter(num) {
